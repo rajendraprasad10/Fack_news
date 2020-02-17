@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<center>
+			<div class="container">
+			<div id="brandname">
+				Machine Learning App with Flask
+			</div>
+			<h3>Fake News Detector From News Headlines</h3>
+		</center>
+	</div>
+	</header>
+
+	<div class="ml-container">
+		<center>
+		<form action="{{ url_for('predict')}}" method="POST">
+		<p>Enter News Headlines Here</p>
+		<!-- <input type="text" name="comment"/> -->
+		<textarea name="Label" rows="6" cols="50" required = 'required'></textarea>
+		<br/>
+		<br/>
+		<input type="submit" class="btn-info" value="predict">
+		
+	</form>
+		</center>
+	</div>
+	<center>
+	<p style="color:blue;font-size:20;text-align: center;"><b>Results for Comment</b></p>
+	<div class="results">
+		{% if prediction == 1%}
+			<h3 style="color:green;">A Fake Headline</h3>
+		{% elif prediction == 0%}
+			<h3 style="color:red;">Not A Fake Headline</h3>
+		{% endif %}
+	</div>
+	</center>
+</body>
+</html>
